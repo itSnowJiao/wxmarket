@@ -1,0 +1,55 @@
+/* pages/category/index.wxss */
+.category {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+}
+/* 左侧样式 */
+.nav_left {
+  width: 24%;
+  background: #efefef;
+  height: 100%;
+}
+.nav_left_items {
+  text-align: center;
+  width: 100%;
+  font-size: 30rpx;
+  line-height: 120rpx;
+}
+.nav_left_items-active {
+  background-color: #17abe3;
+  color: #fff;
+}
+
+/* 右侧样式 */
+.nav_right {
+  width: 76%;
+  height: 100%;
+}
+.right-title {
+  color: #444;
+  font-weight: bold;
+  padding: 40rpx;
+}
+.right-category-wrap {
+  overflow: hidden;
+  padding: 20rpx 20rpx;
+}
+.right-category-style {
+  width: 33.3%;
+  float: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.list_img{
+  width: 150rpx;
+  height: 150rpx;
+}
+.list_text{
+  text-align: center;
+  font-size: 24rpx;
+  color: #686868;
+  margin-top: 10rpx;
+  height: 70rpx;
+}

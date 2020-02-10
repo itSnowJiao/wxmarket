@@ -1,0 +1,59 @@
+<!--pages/cart/index.wxml-->
+<view class="cart">
+  <view class="empty" wx:if="{{cartArray.length == 0}}">
+    <image src="../../image/shop_cart.png"></image>
+    <text>购物车空空如也，去逛逛吧</text>
+  </view>
+  <view wx:else class="section">
+    <!-- 购物车布局 -->
+    <block wx:for="{{cartArray}}" wx:key="index">
+      <view 
+        class="section-box {{item.isTouchMove ? 'touch-move-active' : ''}}"
+        bindtouchstart="touchStart"
+        bindtouchmove="touchMove"
+        data-index="{{index}}"
+        >
+        <view class="goods-content" bindtap="switchToDetails" data-index="{{index}}">
+          <view class="select_icon" catchtap="selectGoods" data-index="{{index}}">
+            <image wx:if="{{item.select}}" src="../../image/selected.png"></image>
+            <image wx:else src="../../image/unselect.png"></image>
+          </view>
+          <view class="goods_list">
+            <view class="goods-img">
+              <image src="{{item.loopImgUrl[0]}}"></image>
+            </view>
+            <view class="goods-info">
+              <view class="info_title">
+                <text>{{item.title}}</text>
+              </view>
+              <view class="info_price">
+                <text class="price">￥{{item.price}}</text>
+                <!-- 商品数量 -->
+                <view class="info_amount">
+                  <amount data-index="{{index}}" bind:eventCount="onCount" count='{{item.total}}' bind:subevent="subCount" bind:addevent="addCount"></amount>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+        <!-- 删除 -->
+        <view class="del" catchtap="del" data-index="{{index}}">删除</view>
+      </view>
+    </block>
+    <!-- 全选 -->
+    <view class="fixBar">
+      <view class="selectAll" catchtap="selectAll">
+        <image wx:if="{{selectAll}}" src="../../image/selected.png"></image>
+        <image wx:else src="../../image/unselect.png"></image>
+        <text>全选</text>
+      </view>
+      <view class="moneyBox">
+        <text>总价：</text>
+        <text class="money">{{totalMoney}}</text>
+      </view>
+      <view class="btn">
+        <button>去结算({{totalCount}})</button>
+      </view>
+    </view>
+  </view>
+</view>

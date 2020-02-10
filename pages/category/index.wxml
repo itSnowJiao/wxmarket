@@ -1,0 +1,29 @@
+<!--pages/category/index.wxml-->
+<view class="category">
+  <!-- 左侧导航 -->
+  <scroll-view class="nav_left" scroll-y="true">
+    <block wx:for="{{navLeftItems}}" wx:key="index">
+      <view  data-index="{{index}}" class="nav_left_items {{curIndex == index ? 'nav_left_items-active' : ''}}" bindtap="switchTabNav">
+        {{item}}
+      </view>
+    </block>
+  </scroll-view>
+  <!-- 右侧分类 -->
+  <scroll-view scroll-y="true" class="nav_right">
+    <view wx:if="{{navRightItems[curIndex]}}">
+      <block wx:for="{{navRightItems[curIndex]}}" wx:for-item='item'  wx:key="index">
+        <view class="right-category">
+          <view class='right-title'>{{item.title}}</view>
+          <view class="right-category-wrap">
+            <block wx:for="{{item.desc}}" wx:for-item="list"  wx:key="index">
+              <view class="right-category-style" data-text="{{list.text}}" bindtap="showListView">
+                <image class="list_img" src="{{list.img}}" />
+                <text class="list_text">{{list.text}}</text>
+              </view>
+            </block>
+          </view>
+        </view>
+      </block>
+    </view>
+  </scroll-view>
+</view>

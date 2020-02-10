@@ -1,0 +1,6 @@
+<!--components/amount/index.wxml-->
+<view class="amount-main">
+  <button class="btn" catchtap="subtract" disabled="{{count<=1}}">-</button>
+  <input type="number" value="{{count}}" bindinput="inputChangeHandle" />
+  <button class="btn" catchtap="add">+</button>
+</view>
